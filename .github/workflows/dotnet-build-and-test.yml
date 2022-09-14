@@ -3,6 +3,8 @@ name: .NET Build and Test
 on:
   pull_request:
     branches: [ "master" ]
+    paths:
+    - "./dotnet/**"
 
 defaults:
   run:
