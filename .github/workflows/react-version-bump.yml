@@ -1,0 +1,27 @@
+
+name: Bump up React Version
+
+on:
+  push:
+    branches: [ "master" ]
+    paths:
+      - "react/**"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name:  'Automated Version Bump'
+        uses:  'phips28/gh-action-bump-version@master'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PACKAGEJSON_DIR: "react"
+        with:
+          major-wording: "MAJOR"
+          minor-wording: "MINOR"
+          patch-wording: "PATCH"
+          default: patch
